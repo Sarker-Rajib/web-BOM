@@ -50,4 +50,3 @@ const setValueFromLocalStorage = (id) => {
 }
 
 setValueFromLocalStorage('count-number');
-
