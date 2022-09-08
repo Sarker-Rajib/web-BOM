@@ -41,11 +41,8 @@ const setValueFromLocalStorage = (id) => {
     const intialNumberElement = document.getElementById(id);
 
     // console.log(isNaN(localnumber) ===);
-    if(localnumber !== null) {
+    if(localnumber) {
         intialNumberElement.innerText = localnumber;
-    }
-    else{
-        intialNumberElement.innerText = 0;
     }
 }
 

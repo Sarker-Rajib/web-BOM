@@ -1,7 +1,7 @@
-const getInputByIdSetValueToLocal = (title , id) => {
+const getInputByIdSetValueToLocal = (title, id) => {
    const inputField = document.getElementById(id);
    const inputValue = inputField.value;
-   inputField.value = '';
+   // inputField.value = '';
    localStorage.setItem(title, inputValue);
 }
 
@@ -16,34 +16,70 @@ const displayValue = (keyName, id) => {
    list.appendChild(li);
 }
 
-document.getElementById('add-name').addEventListener('click', function(){
+document.getElementById('add-name').addEventListener('click', function () {
    displayValue('Name', 'name');
    getInputByIdSetValueToLocal('Name', 'name');
 })
 
-document.getElementById('remove-name').addEventListener('click', function(){
+document.getElementById('remove-name').addEventListener('click', function () {
    localStorage.removeItem('Name');
 })
 
-document.getElementById('add-email').addEventListener('click', function(){
+document.getElementById('add-email').addEventListener('click', function () {
    displayValue('Email', 'email');
    getInputByIdSetValueToLocal('Email', 'email');
 })
 
-document.getElementById('remove-email').addEventListener('click', function(){
+document.getElementById('remove-email').addEventListener('click', function () {
    localStorage.removeItem('Email');
 })
 
 
-document.getElementById('add-message').addEventListener('click', function(){
+document.getElementById('add-message').addEventListener('click', function () {
    displayValue('Message', 'message');
    getInputByIdSetValueToLocal('Message', 'message');
 })
 
-document.getElementById('remove-message').addEventListener('click', function(){
+document.getElementById('remove-message').addEventListener('click', function () {
    localStorage.removeItem('Message');
 })
 
-document.getElementById('reset-all').addEventListener('click', function(){
+document.getElementById('send-all').addEventListener('click', function () {
+   displayValue('Name', 'name');
+   getInputByIdSetValueToLocal('Name', 'name');
+
+   displayValue('Email', 'email');
+   getInputByIdSetValueToLocal('Email', 'email');
+
+   displayValue('Message', 'message');
+   getInputByIdSetValueToLocal('Message', 'message');
+})
+
+document.getElementById('reset-all').addEventListener('click', function () {
    localStorage.clear();
 })
+
+const setValueFromLocal = (id, value) => {
+   const inputField = document.getElementById(id);
+   inputField.value = value;
+}
+
+const getobjectToLocalStorage = () => {
+   let name = localStorage.getItem('Name');
+   let email = localStorage.getItem('Email');
+   let message = localStorage.getItem('Message');
+
+   if (name) {
+      setValueFromLocal('name', name)
+   }
+
+   if (email) {
+      setValueFromLocal('email', email)
+   }
+
+   if (message) {
+      setValueFromLocal('message', message)
+   }
+}
+
+getobjectToLocalStorage();
